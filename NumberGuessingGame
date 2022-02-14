@@ -1,0 +1,55 @@
+import java.util.Random;
+import java.util.Scanner;
+public class NumberGuessingGame{
+      static Scanner sc;  
+    
+    public static void main(String[] args){
+	
+	String playerName="";
+	sc = new Scanner(System.in);
+	
+        System.out.println("What is your name");
+	playerName = sc.nextLine();
+	System.out.println("Hello "+playerName);
+	(new NumberGuessingGame()).playNumberGame();
+}
+    public  void playNumberGame(){    
+	Random random = new Random();
+    int randomNumber=random.nextInt(20)+1;
+	//System.out.println(randomNumber);
+    
+    int countTries=0; 
+    int maxTries=6;
+    
+    int userResponse;
+	
+	while (countTries<maxTries) {
+		
+		
+		System.out.println("Guess your number");
+                int guessNumber = sc.nextInt();
+                if (guessNumber == randomNumber){
+                    System.out.println("you guessed right!");
+                countTries++;     
+		break;}
+                else if (randomNumber > guessNumber)
+                    System.out.println("Your guess is too LOW");
+                else System.out.println("Your guess is too HIGH");
+		countTries++;
+           
+
+            }
+		System.out.println("You have tried "+ countTries+" times");
+		
+        	System.out.println("Would you like to play new game: 1 for Yes/2 for No");
+	   	userResponse = sc.nextInt();
+		//System.out.println("here "+ userResponse);
+	    	if (userResponse==1)
+		(new NumberGuessingGame()).playNumberGame();
+		else System.exit(0);
+
+        }
+    
+
+    
+}
